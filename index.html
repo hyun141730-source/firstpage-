@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>따뜻한빵집 — 고연령 친화형 제과제빵 웹사이트</title>
+  <meta name="description" content="50대 이상 고객을 위한 사용하기 쉬운 제과제빵 쇼핑 및 정보 사이트 기획안(프로토타입 HTML)" />
+  <style>
+    :root{
+      --bg:#fffbea;
+      --primary:#8b3e2f; /* 따뜻한 브라운 */
+      --accent:#c76b4a;
+      --text:#222;
+      --large:20px;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;font-family: -apple-system, BlinkMacSystemFont, "Noto Sans KR", "Helvetica Neue", Arial, "Apple SD Gothic Neo", sans-serif;
+      background:var(--bg);color:var(--text);font-size:var(--large);line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Skip link for keyboard users */
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:10px;top:10px;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;z-index:1000}
+
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:3px solid rgba(0,0,0,0.06)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:22px}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0}
+    nav a{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--primary);font-weight:600}
+    nav a:focus{outline:3px solid #ffd9c6}
+
+    /* Hero */
+    .hero{padding:26px 24px;display:flex;gap:24px;align-items:center}
+    .hero-text{max-width:720px}
+    .eyebrow{font-size:14px;color:#6b4b45;margin-bottom:8px}
+    h1{font-size:32px;margin:0 0 8px}
+    p.lead{font-size:20px;margin:0 0 16px}
+    .cta{display:flex;gap:12px}
+    .btn{font-size:18px;padding:12px 18px;border-radius:10px;border:none;cursor:pointer}
+    .btn-primary{background:var(--primary);color:white}
+    .btn-ghost{background:transparent;border:2px solid var(--primary);color:var(--primary)}
+
+    /* Grid */
+    .container{padding:0 24px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:18px 0}
+    .card{background:white;border-radius:12px;padding:14px;box-shadow:0 6px 14px rgba(0,0,0,0.06)}
+    .card h3{margin:8px 0 4px;font-size:18px}
+    .card p{margin:0;font-size:16px;color:#444}
+
+    /* Order Steps */
+    .steps{display:flex;flex-direction:column;gap:12px;margin:18px 0}
+    .step{display:flex;gap:12px;align-items:center}
+    .step .num{width:52px;height:52px;border-radius:50%;background:var(--primary);color:white;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+    /* Footer */
+    footer{padding:22px 24px;margin-top:30px;border-top:2px solid rgba(0,0,0,0.05)}
+
+    /* Accessibility controls */
+    .access-controls{display:flex;gap:8px;align-items:center}
+    .zoom-btn{padding:8px 10px;border-radius:8px;border:1px solid #ccc;background:#fff}
+
+    /* Responsive */
+    @media (max-width:720px){
+      h1{font-size:26px}
+      .logo{width:56px;height:56px;font-size:20px}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+  <header role="banner">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">빵</div>
+      <div>
+        <div style="font-weight:800;font-size:18px">따뜻한빵집</div>
+        <div style="font-size:13px;color:#6b4b45">편안하고 쉬운 제과제빵 쇼핑</div>
+      </div>
+    </div>
+    <nav role="navigation" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="#products">상품보기</a></li>
+        <li><a href="#order">주문방법</a></li>
+        <li><a href="#store">매장안내</a></li>
+        <li><a href="#contact">문의</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" role="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <div class="eyebrow">50대 이상도 쉽게</div>
+        <h1 id="hero-title">큰 글자 · 단순한 흐름 · 친절한 설명</h1>
+        <p class="lead">따뜻한빵집은 눈에 잘 보이고, 버튼이 크며, 주문 과정이 한눈에 들어오는 디자인을 제공합니다. 전화 주문도 쉽게 찾을 수 있어요.</p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="location.href='#products'">오늘의 추천 빵</button>
+          <button class="btn btn-ghost" onclick="location.href='#order'">주문 방법 보기</button>
+        </div>
+        <div style="margin-top:12px" class="access-controls" aria-hidden="false">
+          <label for="textIncrease">글자크기</label>
+          <button class="zoom-btn" id="textIncrease" aria-label="글자 크게">A+</button>
+          <button class="zoom-btn" id="textDecrease" aria-label="글자 작게">A-</button>
+          <button class="zoom-btn" id="highContrast" aria-pressed="false">고대비</button>
+        </div>
+      </div>
+      <div style="flex:1;max-width:420px">
+        <!-- 이미지 위치: 실제 배포 시 고화질 사진으로 교체 -->
+        <div class="card" style="display:flex;align-items:center;justify-content:center;height:220px;font-size:18px">맛있는 빵 사진</div>
+      </div>
+    </section>
+
+    <section id="products" class="container" aria-labelledby="products-title">
+      <h2 id="products-title">추천 상품</h2>
+      <p>대표 메뉴를 크게 보여주고, 설명은 짧고 명확하게 — 가격과 알레르기 정보를 눈에 띄게 표시합니다.</p>
+
+      <div class="cards" role="list">
+        <article class="card" role="listitem" aria-labelledby="p1">
+          <h3 id="p1">갓 구운 식빵</h3>
+          <p>부드럽고 촉촉한 식빵 — 밀, 우유 포함</p>
+          <p style="margin-top:8px;font-weight:700">₩4,500</p>
+          <button class="btn btn-primary" style="margin-top:8px" onclick="alert('전화로 주문하시겠습니까? 02-000-0000')">전화 주문</button>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="p2">
+          <h3 id="p2">단팥빵</h3>
+          <p>달콤한 단팥이 가득한 인기메뉴</p>
+          <p style="margin-top:8px;font-weight:700">₩2,500</p>
+          <button class="btn btn-primary" style="margin-top:8px" onclick="location.href='#order'">매장 픽업</button>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="p3">
+          <h3 id="p3">모카 롤</h3>
+          <p>커피향 가득, 부드러운 식감</p>
+          <p style="margin-top:8px;font-weight:700">₩3,800</p>
+          <button class="btn btn-primary" style="margin-top:8px" onclick="location.href='#contact'">배달 문의</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="order" class="container" aria-labelledby="order-title">
+      <h2 id="order-title">간단 주문 가이드</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="num" aria-hidden="true">1</div>
+          <div>
+            <strong>원하시는 빵을 선택</strong>
+            <div>사진과 큰 글씨로 메뉴를 확인하세요.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num" aria-hidden="true">2</div>
+          <div>
+            <strong>전화 또는 매장 픽업 선택</strong>
+            <div>전화 주문: <a href="tel:020000000">02-000-0000</a> (클릭하여 바로 통화)</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num" aria-hidden="true">3</div>
+          <div>
+            <strong>수령 시간 확인</strong>
+            <div>매장 도착 10분 전 연락주시면 바로 준비해드립니다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="store" class="container" aria-labelledby="store-title">
+      <h2 id="store-title">매장안내</h2>
+      <p>오시는 길과 주차 정보, 쉬운 지도 링크를 제공합니다. 주소와 영업시간은 명확하게 표기합니다.</p>
+      <div class="card">
+        <strong>본점</strong>
+        <div>서울특별시 강남구 따뜻로 1</div>
+        <div>영업시간: 08:00 - 20:00</div>
+        <div>주차: 매장 앞 3대 가능</div>
+      </div>
+    </section>
+
+    <section id="contact" class="container" aria-labelledby="contact-title">
+      <h2 id="contact-title">문의</h2>
+      <p>간단한 문의 폼(이름, 연락처, 문의내용) — 필수 입력 항목만 최소화합니다.</p>
+
+      <form class="card" onsubmit="event.preventDefault();alert('문의가 접수되었습니다. 빠르게 연락드릴게요.')" aria-label="문의 폼">
+        <label for="name">이름 (필수)</label><br>
+        <input id="name" name="name" required style="font-size:18px;padding:10px;width:100%;margin:6px 0;border-radius:8px;border:1px solid #ccc" />
+        <label for="phone">전화번호 (필수)</label><br>
+        <input id="phone" name="phone" required style="font-size:18px;padding:10px;width:100%;margin:6px 0;border-radius:8px;border:1px solid #ccc" />
+        <label for="message">문의내용</label><br>
+        <textarea id="message" name="message" rows="4" style="font-size:18px;padding:10px;width:100%;margin:6px 0;border-radius:8px;border:1px solid #ccc"></textarea>
+        <div style="margin-top:8px;display:flex;gap:10px">
+          <button class="btn btn-primary" type="submit">보내기</button>
+          <button class="btn" type="reset">다시쓰기</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:700">따뜻한빵집</div>
+          <div style="font-size:14px">전화: 02-000-0000 · 이메일: help@warmbread.kr</div>
+        </div>
+        <div style="font-size:14px">사이트 이용이 어려우신 경우, 전화로 주문하세요.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 글자 크기 조절 및 고대비 토글 (간단한 접근성 기능)
+    const root = document.documentElement;
+    const increase = document.getElementById('textIncrease');
+    const decrease = document.getElementById('textDecrease');
+    const contrast = document.getElementById('highContrast');
+
+    increase.addEventListener('click', ()=>{
+      const cur = parseFloat(getComputedStyle(document.body).fontSize);
+      document.body.style.fontSize = (cur + 2) + 'px';
+    });
+    decrease.addEventListener('click', ()=>{
+      const cur = parseFloat(getComputedStyle(document.body).fontSize);
+      if(cur>12) document.body.style.fontSize = (cur - 2) + 'px';
+    });
+    contrast.addEventListener('click', ()=>{
+      const pressed = contrast.getAttribute('aria-pressed') === 'true';
+      contrast.setAttribute('aria-pressed', String(!pressed));
+      if(!pressed){
+        document.body.style.background = '#000';
+        document.body.style.color = '#fff';
+      } else {
+        document.body.style.background = '';
+        document.body.style.color = '';
+      }
+    });
+
+    // 키보드 포커스 스타일 보강
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Tab') document.documentElement.classList.add('show-focus');
+    });
+  </script>
+</body>
+
+</html>
